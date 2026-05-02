@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Visit Bukidnon – Heart of Mindanao</title>
+  <!-- Chosen City/Municipality: Province of Bukidnon (Capital: Malaybalay City, Philippines) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+/* ════════════════════════════════
+   VARIABLES & RESET
+════════════════════════════════ */
+:root{
+  --pine:#0d3321;
+  --forest:#1a5c38;
+  --fern:#3a8c5c;
+  --sage:#82c69c;
+  --mist:#d6ede1;
+  --cream:#f6f2e9;
+  --gold:#c8933a;
+  --sun:#f0be6a;
+  --bark:#3d1f08;
+  --white:#ffffff;
+  --gray:#5a6b5d;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Nunito',sans-serif;
+  background:var(--cream);
+  color:#1e2e22;
+  overflow-x:hidden;
+}
+
+/* ════════════════════════════════
+   NAVBAR
+════════════════════════════════ */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  background:rgba(13,51,33,.96);
+  backdrop-filter:blur(12px);
+  border-bottom:2px solid var(--gold);
+}
+.nav-wrap{
+  max-width:1200px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 1.4rem;height:60px;
+}
+.logo{
+  font-family:'Abril Fatface',serif;
+  font-size:1.45rem;color:var(--sun);
+  text-decoration:none;letter-spacing:.5px;
+  display:flex;align-items:center;gap:.4rem;
+}
+.logo sup{
+  font-family:'Nunito',sans-serif;
+  font-size:.55rem;letter-spacing:2px;color:var(--sage);
+  font-weight:600;text-transform:uppercase;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(130,198,156,.3);
+  padding:.15rem .45rem;border-radius:2px;vertical-align:middle;
+}
+
+/* Hamburger */
+.ham{
+  display:none;flex-direction:column;gap:5px;
+  background:none;border:none;cursor:pointer;padding:4px;
+}
+.ham span{
+  display:block;width:26px;height:2px;
+  background:var(--sun);border-radius:2px;
+  transition:.3s;transform-origin:center;
+}
+.ham.on span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.ham.on span:nth-child(2){opacity:0;}
+.ham.on span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+.nav-list{display:flex;list-style:none;gap:.1rem;}
+.nav-list a{
+  display:block;padding:.4rem .9rem;
+  color:rgba(255,255,255,.78);text-decoration:none;
+  font-size:.78rem;font-weight:700;letter-spacing:1.3px;
+  text-transform:uppercase;border-radius:3px;
+  transition:color .2s,background .2s;
+}
+.nav-list a:hover{color:var(--sun);background:rgba(200,147,58,.14);}
+
+/* ════════════════════════════════
+   HERO
+════════════════════════════════ */
+#home{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  padding:8rem 1.5rem 6rem;
+  position:relative;overflow:hidden;
+  background:
+    linear-gradient(180deg,
+      rgba(5,22,12,.72) 0%,
+      rgba(13,51,33,.45) 45%,
+      rgba(5,22,12,.80) 100%),
+    url('https://images.unsplash.com/photo-1448375240586-882707db888b?w=1800&q=85')
+    center/cover no-repeat;
+}
+
+/* animated particles */
+.ptl{
+  position:absolute;border-radius:50%;
+  background:rgba(130,198,156,.12);
+  animation:drift linear infinite;pointer-events:none;
+}
+.ptl:nth-child(1){width:180px;height:180px;top:-40px;left:-60px;animation-duration:18s;}
+.ptl:nth-child(2){width:120px;height:120px;top:20%;right:5%;animation-duration:14s;animation-delay:-5s;}
+.ptl:nth-child(3){width:220px;height:220px;bottom:10%;left:10%;animation-duration:22s;animation-delay:-9s;}
+@keyframes drift{
+  0%,100%{transform:translateY(0) scale(1);}
+  50%{transform:translateY(-30px) scale(1.05);}
+}
+
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  border:1px solid rgba(200,147,58,.6);
+  color:var(--sun);font-size:.7rem;letter-spacing:2.5px;
+  text-transform:uppercase;padding:.38rem 1.1rem;
+  border-radius:30px;margin-bottom:1.6rem;
+  background:rgba(200,147,58,.08);
+  animation:up .9s ease both;
+}
+h1.hero-title{
+  font-family:'Abril Fatface',serif;
+  font-size:clamp(3.5rem,10vw,7.5rem);
+  color:var(--white);line-height:.95;
+  margin-bottom:.6rem;
+  animation:up .9s .15s ease both;
+  text-shadow:0 4px 30px rgba(0,0,0,.4);
+}
+h1.hero-title .accent{
+  display:block;color:var(--sun);
+  font-size:clamp(1.2rem,3.5vw,2.2rem);
+  font-family:'Nunito',sans-serif;font-weight:300;
+  letter-spacing:5px;text-transform:uppercase;
+  margin-top:.3rem;
+}
+.hero-p{
+  max-width:520px;margin:.8rem auto 2.2rem;
+  color:rgba(255,255,255,.72);
+  font-size:clamp(.92rem,2vw,1.05rem);
+  font-weight:300;line-height:1.85;
+  animation:up .9s .3s ease both;
+}
+.hero-cta{
+  display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
+  animation:up .9s .45s ease both;
+}
+.btn{
+  padding:.8rem 2rem;border-radius:4px;font-size:.82rem;
+  font-weight:700;letter-spacing:1.6px;text-transform:uppercase;
+  text-decoration:none;transition:all .2s;
+}
+.btn-gold{background:var(--gold);color:var(--bark);}
+.btn-gold:hover{background:var(--sun);transform:translateY(-2px);}
+.btn-ghost{
+  border:1.5px solid rgba(255,255,255,.45);color:var(--white);
+}
+.btn-ghost:hover{background:rgba(255,255,255,.1);border-color:var(--sun);}
+
+/* bottom wave */
+.wave-bottom{
+  position:absolute;bottom:-1px;left:0;right:0;line-height:0;
+}
+.wave-bottom svg{display:block;width:100%;}
+
+@keyframes up{
+  from{opacity:0;transform:translateY(32px);}
+  to{opacity:1;transform:none;}
+}
+
+/* ════════════════════════════════
+   SECTION SHARED
+════════════════════════════════ */
+section{position:relative;z-index:1;}
+.wrap{max-width:1200px;margin:0 auto;padding:5.5rem 1.5rem;}
+.lbl{
+  font-size:.65rem;letter-spacing:3px;text-transform:uppercase;
+  color:var(--fern);font-weight:700;margin-bottom:.4rem;
+}
+.ttl{
+  font-family:'Abril Fatface',serif;
+  font-size:clamp(2rem,4.5vw,3rem);
+  color:var(--pine);line-height:1.15;margin-bottom:.8rem;
+}
+.bar{width:46px;height:3px;background:var(--gold);border-radius:2px;margin-bottom:2.2rem;}
+
+/* ════════════════════════════════
+   ABOUT
+════════════════════════════════ */
+#about{background:var(--cream);}
+.about-g{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:4rem;align-items:center;
+}
+.about-txt p{
+  font-size:.97rem;line-height:1.95;color:#364d3b;
+  font-weight:400;margin-bottom:.85rem;
+}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.5rem;}
+.st{
+  background:var(--pine);color:var(--white);
+  padding:1.4rem;border-radius:5px;text-align:center;
+  border-bottom:3px solid var(--gold);
+}
+.st b{
+  display:block;font-family:'Abril Fatface',serif;
+  font-size:2.2rem;color:var(--sun);line-height:1;
+}
+.st small{font-size:.7rem;letter-spacing:1px;color:var(--sage);margin-top:.3rem;display:block;}
+
+.about-img{
+  border-radius:8px;overflow:hidden;
+  box-shadow:0 20px 60px rgba(13,51,33,.22);position:relative;
+}
+.about-img img{width:100%;height:400px;object-fit:cover;display:block;}
+.about-img::after{
+  content:'Bukidnon Highlands';
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(to top,rgba(5,22,12,.8),transparent);
+  color:rgba(255,255,255,.7);font-size:.75rem;letter-spacing:2px;
+  text-transform:uppercase;padding:3rem 1rem .8rem;text-align:center;
+}
+
+/* ════════════════════════════════
+   ATTRACTIONS
+════════════════════════════════ */
+#attractions{background:#e8f5ed;}
+.grid-10{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:1.6rem;
+}
+.card{
+  background:var(--white);border-radius:7px;overflow:hidden;
+  box-shadow:0 3px 18px rgba(13,51,33,.09);
+  display:flex;flex-direction:column;
+  transition:transform .35s,box-shadow .35s;
+}
+.card:hover{transform:translateY(-8px);box-shadow:0 16px 40px rgba(13,51,33,.18);}
+
+.card-img{height:190px;overflow:hidden;position:relative;}
+.card-img img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .55s;
+}
+.card:hover .card-img img{transform:scale(1.1);}
+.card-num{
+  position:absolute;top:10px;left:10px;
+  background:var(--gold);color:var(--bark);
+  font-size:.62rem;font-weight:800;letter-spacing:1.2px;
+  padding:.22rem .65rem;border-radius:2px;text-transform:uppercase;
+}
+.card-chip{
+  position:absolute;bottom:10px;right:10px;
+  background:rgba(13,51,33,.85);color:var(--sage);
+  font-size:.62rem;letter-spacing:.8px;padding:.2rem .6rem;border-radius:2px;
+}
+.card-body{padding:1.2rem 1.3rem 1.4rem;flex:1;display:flex;flex-direction:column;}
+.card-name{
+  font-family:'Abril Fatface',serif;font-size:1.05rem;
+  color:var(--pine);margin-bottom:.4rem;line-height:1.25;
+}
+.card-desc{font-size:.85rem;color:#4e6454;line-height:1.75;font-weight:400;flex:1;}
+.card-note{
+  margin-top:.75rem;display:inline-block;
+  background:#e8f5ed;border:1px solid #9ecfb0;color:var(--fern);
+  font-size:.63rem;font-weight:700;letter-spacing:.8px;
+  padding:.2rem .55rem;border-radius:2px;
+}
+
+/* ════════════════════════════════
+   CULTURE
+════════════════════════════════ */
+#culture{
+  background:var(--pine);
+  background-image:
+    radial-gradient(ellipse 80% 60% at 0% 50%, rgba(58,140,92,.18),transparent),
+    radial-gradient(ellipse 50% 80% at 100% 30%, rgba(130,198,156,.1),transparent);
+}
+#culture .lbl{color:var(--sage);}
+#culture .ttl{color:var(--cream);}
+#culture .bar{background:var(--gold);}
+.cult-g{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:1.2rem;margin-top:.5rem;
+}
+.cult-c{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(200,147,58,.2);
+  border-radius:6px;padding:1.6rem 1.4rem;
+  transition:background .3s,border-color .3s;
+}
+.cult-c:hover{background:rgba(255,255,255,.1);border-color:rgba(200,147,58,.55);}
+.cult-c .ico{font-size:2.2rem;margin-bottom:.7rem;display:block;}
+.cult-c h3{
+  font-family:'Abril Fatface',serif;font-size:1rem;
+  color:var(--sun);margin-bottom:.5rem;
+}
+.cult-c p{font-size:.84rem;color:rgba(255,255,255,.62);line-height:1.75;}
+
+/* ════════════════════════════════
+   SERVICES
+════════════════════════════════ */
+#services{background:var(--cream);}
+.svc-g{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+  gap:1.2rem;
+}
+.svc-c{
+  background:var(--white);border-radius:5px;padding:1.4rem;
+  border-top:4px solid var(--fern);
+  box-shadow:0 2px 14px rgba(13,51,33,.07);
+  transition:border-color .25s,transform .25s;
+}
+.svc-c:hover{border-color:var(--gold);transform:translateY(-4px);}
+.svc-c .ico{font-size:1.7rem;margin-bottom:.55rem;}
+.svc-c h3{
+  font-family:'Abril Fatface',serif;font-size:.98rem;
+  color:var(--pine);margin-bottom:.35rem;
+}
+.svc-c p{font-size:.83rem;color:#536456;line-height:1.65;}
+
+/* ════════════════════════════════
+   CONTACT
+════════════════════════════════ */
+#contact{background:#e8f5ed;}
+.con-g{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.con-info p{font-size:.95rem;line-height:1.9;color:#364d3b;margin-bottom:1.3rem;}
+.con-row{display:flex;align-items:flex-start;gap:.85rem;margin-bottom:.9rem;}
+.con-row .i{font-size:1.2rem;margin-top:.05rem;}
+.con-row span{font-size:.88rem;color:#425548;line-height:1.65;}
+
+.con-form{display:flex;flex-direction:column;gap:.85rem;}
+.con-form input,.con-form textarea,.con-form select{
+  padding:.82rem 1rem;
+  border:1.5px solid #b5d4bf;border-radius:4px;
+  font-family:'Nunito',sans-serif;font-size:.9rem;
+  background:var(--white);color:#1e2e22;
+  transition:border-color .2s;resize:none;
+}
+.con-form input:focus,.con-form textarea:focus,.con-form select:focus{
+  outline:none;border-color:var(--fern);
+}
+.con-form textarea{height:125px;}
+.con-form button{
+  background:var(--pine);color:var(--white);border:none;
+  padding:.88rem 2rem;font-family:'Nunito',sans-serif;
+  font-size:.82rem;letter-spacing:2px;font-weight:700;
+  text-transform:uppercase;cursor:pointer;border-radius:4px;
+  transition:background .2s;
+}
+.con-form button:hover{background:var(--forest);}
+
+/* ════════════════════════════════
+   FOOTER
+════════════════════════════════ */
+footer{
+  background:var(--pine);color:rgba(255,255,255,.5);
+  text-align:center;padding:2.2rem 1.5rem;
+  border-top:3px solid var(--gold);
+  font-size:.8rem;letter-spacing:.4px;
+}
+footer strong{color:var(--sun);}
+.f-links{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:.8rem;
+  margin-bottom:.9rem;
+}
+.f-links a{
+  color:rgba(255,255,255,.35);text-decoration:none;
+  font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;
+  transition:color .2s;font-weight:700;
+}
+.f-links a:hover{color:var(--sun);}
+
+/* ════════════════════════════════
+   SCROLL REVEAL
+════════════════════════════════ */
+.r{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease;}
+.r.show{opacity:1;transform:none;}
+
+/* ════════════════════════════════
+   RESPONSIVE
+════════════════════════════════ */
+@media(max-width:900px){
+  .about-g,.con-g{grid-template-columns:1fr;gap:2.5rem;}
+  .about-img{display:none;}
+}
+@media(max-width:768px){
+  .ham{display:flex;}
+  .nav-list{
+    display:none;flex-direction:column;gap:0;
+    position:absolute;top:60px;left:0;right:0;
+    background:rgba(10,38,22,.98);
+    border-top:1px solid rgba(200,147,58,.25);
+  }
+  .nav-list.open{display:flex;}
+  .nav-list li{border-bottom:1px solid rgba(255,255,255,.06);}
+  .nav-list a{padding:1rem 1.5rem;font-size:.86rem;}
+  .hero-cta{flex-direction:column;align-items:center;}
+  .stats{grid-template-columns:1fr 1fr;}
+}
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav id="nav">
+  <div class="nav-wrap">
+    <a class="logo" href="#home">🌿 Bukidnon <sup>PH</sup></a>
+    <button class="ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-list" id="navList">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#attractions">Attractions</a></li>
+      <li><a href="#culture">Culture</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="home">
+  <div class="ptl"></div><div class="ptl"></div><div class="ptl"></div>
+
+  <div class="hero-badge">🇵🇭 Province of Bukidnon · Mindanao, Philippines</div>
+  <h1 class="hero-title">
+    BUKIDNON
+    <span class="accent">Heart of Mindanao</span>
+  </h1>
+  <p class="hero-p">
+    Discover cool highland breezes, dramatic mountain peaks, ancient indigenous traditions,
+    and unforgettable natural adventures in the green heartland of Mindanao.
+  </p>
+  <div class="hero-cta">
+    <a class="btn btn-gold" href="#attractions">Explore Attractions</a>
+    <a class="btn btn-ghost" href="#contact">Plan Your Visit</a>
+  </div>
+
+  <div class="wave-bottom">
+    <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path fill="#f6f2e9" d="M0,50 C360,80 1080,10 1440,50 L1440,80 L0,80 Z"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-g">
+      <div class="about-txt r">
+        <p class="lbl">About the Province</p>
+        <h2 class="ttl">A Highland Treasure Waiting to Be Explored</h2>
+        <div class="bar"></div>
+        <p>Bukidnon is a vast landlocked province in the highlands of Northern Mindanao. Its capital, <strong>Malaybalay City</strong>, rests at 762 meters above sea level — gifting the province a refreshingly cool climate, emerald rolling plateaus, and majestic mountain ranges.</p>
+        <p>Home to <strong>seven indigenous peoples</strong> — the Talaandig, Higaonon, Manobo, Matigsalug, Tigwahanon, Umayamnon, and Bukidnon tribes — the province blends living culture, thrilling adventure, and rich agricultural heritage into one unforgettable destination.</p>
+        <div class="stats">
+          <div class="st"><b>10,498</b><small>km² Total Area</small></div>
+          <div class="st"><b>1.4M+</b><small>Population</small></div>
+          <div class="st"><b>7</b><small>Indigenous Tribes</small></div>
+          <div class="st"><b>22</b><small>Municipalities</small></div>
+        </div>
+      </div>
+      <div class="about-img r">
+        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=85" alt="Bukidnon lush forests"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ATTRACTIONS ══ -->
+<section id="attractions">
+  <div class="wrap">
+    <p class="lbl r">Tourist Destinations</p>
+    <h2 class="ttl r">10 Must-See Spots in Bukidnon</h2>
+    <div class="bar r"></div>
+    <div class="grid-10">
+
+      <div class="card r">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80" alt="Dahilayan Adventure Park" loading="lazy"/>
+          <span class="card-num">Spot 01</span>
+          <span class="card-chip">⚡ Adventure</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Dahilayan Adventure Park</h3>
+          <p class="card-desc">Asia's longest dual zipline at 4,500 ft above sea level in Manolo Fortich. Features zip towers, forest trails, ATV rides, and a sky maze surrounded by pine forests.</p>
+        </div>
+      </div>
+
+      <div class="card r">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Mount Kitanglad" loading="lazy"/>
+          <span class="card-num">Spot 02</span>
+          <span class="card-chip">🏔️ Nature Park</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Mount Kitanglad Range Natural Park</h3>
+          <p class="card-desc">A UNESCO-recognized ASEAN Heritage Park hosting rich biodiversity — Philippine eagles, mossy cloud forests, and endemic flora across its towering peaks.</p>
+          <span class="card-note">★ ASEAN Heritage Park</span>
+        </div>
+      </div>
+
+      <div class="card r">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1418065460487-3e41a6c84dc5?w=600&q=80" alt="Mount Dulang-Dulang" loading="lazy"/>
+          <span class="card-num">Spot 03</span>
+          <span class="card-chip">🏔️ Summit</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Mount Dulang-Dulang</h3>
+          <p class="card-desc">The second highest peak in the Philippines at 2,938 meters, located within the Kitanglad Range. A challenging trek rewarding climbers with breathtaking summit views above the clouds.</p>
+          <span class="card-note">🏅 2nd Highest Peak in PH</span>
+        </div>
+      </div>
+
+      <div class="card r">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1500076656116-558758c991c1?w=600&q=80" alt="Communal Ranch Impasug-ong" loading="lazy"/>
+          <span class="card-num">Spot 04</span>
+          <span class="card-chip">🐄 Agri-Tourism</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Communal Ranch (Impasug-ong)</h3>
+          <p class="card-desc">A sweeping highland cattle ranch draped in cool mists and pine trees in Impasug-ong. Offers pastoral landscapes reminiscent of New Zealand's green rolling hills.</p>
+        </div>
+      </div>
+
+      <div class="card r">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1520637836993-5729ba7a1cb3?w=600&q=80" alt="Communal Ranch sunrise view" loading="lazy"/>
+          <span class="card-num">Spot 05</span>
+          <span class="card-chip">🐄 Agri-Tourism</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Communal Ranch (Impasug-ong)</h3>
+          <p class="card-desc">Experience sunrise horseback riding across open grasslands, picnics under pine canopies, and peaceful mornings in one of Bukidnon's most photogenic highland escapes.</p>
+          <span class="card-note">🔁 Also in Spot 04 — Different Experience</span>
+        </div>
+      </div>
+
+      <div class="card r">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80" alt="Panimahawa Ridge" loading="lazy"/>
+          <span class="card-num">Spot 06</span>
+          <span class="card-chip">🌅 Scenic Ridge</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Panimahawa Ridge</h3>
+          <p class="card-desc">A dramatic highland ridge offering 360° panoramic views of Bukidnon's vast plateau and mountain ranges — a prime sunrise hiking destination and nature photography spot.</p>
+        </div>
+      </div>
+
+      <div class="card r">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad?w=600&q=80" alt="Monastery of the Transfiguration" loading="lazy"/>
+          <span class="card-num">Spot 07</span>
+          <span class="card-chip">🕊️ Heritage</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Monastery of the Transfiguration</h3>
+          <p class="card-desc">A serene Benedictine monastery in Malaybalay perched on a pine-covered hill, featuring manicured gardens, a gift shop with local products, a café, and spiritual retreat facilities.</p>
+        </div>
+      </div>
+
+      <div class="card r">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=600&q=80" alt="Del Monte Pineapple Farm" loading="lazy"/>
+          <span class="card-num">Spot 08</span>
+          <span class="card-chip">🍍 Agri-Tourism</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Del Monte Pineapple Farm</h3>
+          <p class="card-desc">One of the world's largest pineapple plantations in Manolo Fortich. Guided tours take you through endless golden rows with a Del Monte museum and fresh pineapple tasting.</p>
+        </div>
+      </div>
+
+      <div class="card r">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=600&q=80" alt="Limunsudan Falls" loading="lazy"/>
+          <span class="card-num">Spot 09</span>
+          <span class="card-chip">💧 Waterfall</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Limunsudan Falls</h3>
+          <p class="card-desc">The Philippines' tallest waterfall at an awe-inspiring 870 meters — a two-tiered cascade plunging through untouched jungle along the Bukidnon–Lanao del Norte border.</p>
+          <span class="card-note">🇵🇭 Tallest Waterfall in the Philippines</span>
+        </div>
+      </div>
+
+      <div class="card r">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=600&q=80" alt="Kaamulan Park and Festival" loading="lazy"/>
+          <span class="card-num">Spot 10</span>
+          <span class="card-chip">🎭 Festival</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">Kaamulan Park &amp; Festival</h3>
+          <p class="card-desc">The iconic venue for Bukidnon's grandest celebration — the Kaamulan Festival (Feb–Mar) — honoring seven indigenous tribes through colorful rituals, dances, and cultural showcases.</p>
+          <span class="card-note">🥁 Held Every February–March</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ CULTURE ══ -->
+<section id="culture">
+  <div class="wrap">
+    <p class="lbl r">Living Heritage</p>
+    <h2 class="ttl r">Culture &amp; Traditions</h2>
+    <div class="bar r"></div>
+    <div class="cult-g">
+      <div class="cult-c r">
+        <span class="ico">🥁</span>
+        <h3>Kaamulan Festival</h3>
+        <p>A month-long ethnic celebration bringing together Bukidnon's seven tribes through ritual dances, indigenous games, street parades, and tribal showcases every February to March.</p>
+      </div>
+      <div class="cult-c r">
+        <span class="ico">🪡</span>
+        <h3>Indigenous Crafts</h3>
+        <p>Masterful beadwork, woven cloth, brassware, and bold geometric textiles — each tribe carries its own distinct artistic language passed through generations.</p>
+      </div>
+      <div class="cult-c r">
+        <span class="ico">🌾</span>
+        <h3>Agricultural Identity</h3>
+        <p>Pineapple, sugarcane, corn, and highland rice define Bukidnon's economy and culture — a proud fusion of ancestral farming traditions and modern agri-enterprise.</p>
+      </div>
+      <div class="cult-c r">
+        <span class="ico">🎵</span>
+        <h3>Tribal Music</h3>
+        <p>The haunting melodies of the kulintang, agung gong, and lantoy bamboo flute accompany ceremonies, courtships, and spiritual rituals across the highland communities.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SERVICES ══ -->
+<section id="services">
+  <div class="wrap">
+    <p class="lbl r">Provincial Government</p>
+    <h2 class="ttl r">Public Services</h2>
+    <div class="bar r"></div>
+    <div class="svc-g">
+      <div class="svc-c r"><div class="ico">🏥</div><h3>Health</h3><p>Provincial hospitals, rural health units, and mobile medical missions across all 22 municipalities.</p></div>
+      <div class="svc-c r"><div class="ico">🎓</div><h3>Education</h3><p>Public schools, state universities, and scholarship programs for the youth of Bukidnon.</p></div>
+      <div class="svc-c r"><div class="ico">🌿</div><h3>Environment</h3><p>Reforestation programs, Mt. Kitanglad watershed protection, and biodiversity conservation efforts.</p></div>
+      <div class="svc-c r"><div class="ico">🚜</div><h3>Agriculture</h3><p>Farmer training, crop production support, and agri-tech programs for sustainable food security.</p></div>
+      <div class="svc-c r"><div class="ico">🛡️</div><h3>Social Welfare</h3><p>DSWD-coordinated aid, indigenous peoples' support, and livelihood assistance programs.</p></div>
+      <div class="svc-c r"><div class="ico">🗺️</div><h3>Tourism Office</h3><p>Travel assistance, festival coordination, and destination marketing for visitors to Bukidnon.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="con-g">
+      <div class="con-info r">
+        <p class="lbl">Get in Touch</p>
+        <h2 class="ttl">Visit or Reach Us</h2>
+        <div class="bar"></div>
+        <p>The Provincial Government of Bukidnon warmly welcomes tourists, researchers, investors, and cultural enthusiasts. Our tourism office is ready to assist with your visit.</p>
+        <div class="con-row"><span class="i">📍</span><span>Capitol Compound, Malaybalay City, Bukidnon 8700, Philippines</span></div>
+        <div class="con-row"><span class="i">📞</span><span>(088) 813-2056 / (088) 813-2057</span></div>
+        <div class="con-row"><span class="i">✉️</span><span>tourism@bukidnon.gov.ph</span></div>
+        <div class="con-row"><span class="i">🕐</span><span>Monday – Friday &nbsp;|&nbsp; 8:00 AM – 5:00 PM</span></div>
+        <div class="con-row"><span class="i">🌡️</span><span>Best Time to Visit: November – March (Cool &amp; Dry)</span></div>
+      </div>
+      <div class="r">
+        <form class="con-form" onsubmit="send(event)">
+          <input type="text" placeholder="Full Name" required/>
+          <input type="email" placeholder="Email Address" required/>
+          <select>
+            <option value="" disabled selected>Type of Inquiry</option>
+            <option>Tourist Information</option>
+            <option>Accommodation Help</option>
+            <option>Cultural Events</option>
+            <option>Government Services</option>
+            <option>Investment &amp; Business</option>
+            <option>Others</option>
+          </select>
+          <textarea placeholder="Write your message here..."></textarea>
+          <button type="submit">📨 Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="f-links">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#attractions">Attractions</a>
+    <a href="#culture">Culture</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <p>© 2025 <strong>Province of Bukidnon</strong> · Official Tourism &amp; Government Website</p>
+  <p style="margin-top:.4rem;color:rgba(255,255,255,.28);font-size:.7rem;">
+    <!-- Chosen City/Municipality: Province of Bukidnon · Capital: Malaybalay City, Philippines -->
+    Malaybalay City, Bukidnon 8700 &nbsp;·&nbsp; 🌿 Heart of Mindanao
+  </p>
+</footer>
+
+<script>
+  /* ── Hamburger ── */
+  const ham = document.getElementById('ham');
+  const navList = document.getElementById('navList');
+  ham.addEventListener('click', () => {
+    ham.classList.toggle('on');
+    navList.classList.toggle('open');
+  });
+  navList.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    ham.classList.remove('on');
+    navList.classList.remove('open');
+  }));
+
+  /* ── Scroll Reveal ── */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.r').forEach(el => obs.observe(el));
+
+  /* ── Form ── */
+  function send(e) {
+    e.preventDefault();
+    alert('✅ Message sent! The Bukidnon Tourism Office will reply within 2–3 business days. Thank you!');
+    e.target.reset();
+  }
+</script>
+</body>
+</html>
