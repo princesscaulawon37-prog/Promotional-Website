@@ -512,7 +512,7 @@ footer strong{color:var(--sun);}
 
       <div class="card r">
         <div class="card-img">
-          <img src="https://images.unsplash.com/photo-1418065460487-3e41a6c84dc5?w=600&q=80" alt="Mount Dulang-Dulang" loading="lazy"/>
+          <img src="https://raw.githubusercontent.com/princesscaulawon37-prog/Promotional-Website/refs/heads/main/MT.%20DULANG%20DULANG.avif" alt="Mount Dulang-Dulang" loading="lazy"/>
           <span class="card-num">Spot 03</span>
           <span class="card-chip">🏔️ Summit</span>
         </div>
