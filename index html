@@ -562,7 +562,7 @@ footer strong{color:var(--sun);}
 
       <div class="card r">
         <div class="card-img">
-          <img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad?w=600&q=80" alt="Monastery of the Transfiguration" loading="lazy"/>
+          <img src="https://raw.githubusercontent.com/princesscaulawon37-prog/Promotional-Website/refs/heads/main/monastery%20of%20transfiguration.avif" alt="Monastery of the Transfiguration" loading="lazy"/>
           <span class="card-num">Spot 07</span>
           <span class="card-chip">🕊️ Heritage</span>
         </div>
