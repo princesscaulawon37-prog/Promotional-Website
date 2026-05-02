@@ -525,7 +525,7 @@ footer strong{color:var(--sun);}
 
       <div class="card r">
         <div class="card-img">
-          <img src="https://images.unsplash.com/photo-1500076656116-558758c991c1?w=600&q=80" alt="Communal Ranch Impasug-ong" loading="lazy"/>
+          <img src="https://raw.githubusercontent.com/princesscaulawon37-prog/Promotional-Website/refs/heads/main/communal%20ranch.avif" alt="Communal Ranch Impasug-ong" loading="lazy"/>
           <span class="card-num">Spot 04</span>
           <span class="card-chip">🐄 Agri-Tourism</span>
         </div>
@@ -537,7 +537,7 @@ footer strong{color:var(--sun);}
 
       <div class="card r">
         <div class="card-img">
-          <img src="https://images.unsplash.com/photo-1520637836993-5729ba7a1cb3?w=600&q=80" alt="Communal Ranch sunrise view" loading="lazy"/>
+          <img src="https://raw.githubusercontent.com/princesscaulawon37-prog/Promotional-Website/refs/heads/main/communal%20ranch.avif" alt="Communal Ranch sunrise view" loading="lazy"/>
           <span class="card-num">Spot 05</span>
           <span class="card-chip">🐄 Agri-Tourism</span>
         </div>
