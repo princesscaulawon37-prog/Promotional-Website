@@ -499,7 +499,7 @@ footer strong{color:var(--sun);}
 
       <div class="card r">
         <div class="card-img">
-          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Mount Kitanglad" loading="lazy"/>
+          <img src="https://raw.githubusercontent.com/princesscaulawon37-prog/Promotional-Website/refs/heads/main/mount%20kitanglad.avif" alt="Mount Kitanglad" loading="lazy"/>
           <span class="card-num">Spot 02</span>
           <span class="card-chip">🏔️ Nature Park</span>
         </div>
