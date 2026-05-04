@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Discover Bukidnon – Nature's Highland Paradise</title>
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #2d2d2d;
+      background: #f4f9f4;
+      line-height: 1.7;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; width: 100%; object-fit: cover; }
+
+    /* ===== COLOUR PALETTE (nature) ===== */
+    :root {
+      --green-dark:  #2d6a4f;
+      --green-mid:   #40916c;
+      --green-light: #74c69d;
+      --cream:       #f4f9f4;
+      --brown:       #7a5c3b;
+      --gold:        #d4a84b;
+      --white:       #ffffff;
+      --text-dark:   #1b1b1b;
+      --text-muted:  #555;
+      --shadow:      0 4px 18px rgba(0,0,0,0.12);
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: var(--green-dark);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .nav-container {
+      max-width: 1200px; margin: auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 1.5rem; height: 64px;
+    }
+    .logo {
+      font-size: 1.35rem; font-weight: 800; color: var(--gold);
+      letter-spacing: 1px;
+    }
+    .logo span { color: var(--green-light); }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 6px;
+    }
+    .hamburger span {
+      display: block; width: 26px; height: 3px;
+      background: var(--white); border-radius: 3px;
+      transition: all .3s;
+    }
+    .nav-links {
+      display: flex; gap: 0; list-style: none;
+    }
+    .nav-links li a {
+      display: block; padding: .85rem 1.1rem;
+      color: var(--white); font-size: .93rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .5px;
+      transition: background .25s, color .25s;
+      border-radius: 4px;
+    }
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      background: var(--green-mid);
+      color: var(--gold);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative; height: 100vh; min-height: 520px;
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('https://dotregion10.com/wp-content/uploads/2019/10/Dahilayan-Adventure-Park-1.jpg') center/cover no-repeat;
+      filter: brightness(.55);
+    }
+    .hero-content { position: relative; z-index: 1; padding: 1rem 1.5rem; }
+    .hero-badge {
+      display: inline-block; background: var(--gold);
+      color: var(--green-dark); font-size: .8rem; font-weight: 700;
+      padding: .35rem .9rem; border-radius: 20px; margin-bottom: 1rem;
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+    .hero-content h1 {
+      font-size: clamp(2.2rem, 6vw, 4.2rem);
+      color: var(--white); font-weight: 900; line-height: 1.15;
+      text-shadow: 0 2px 14px rgba(0,0,0,.6);
+    }
+    .hero-content h1 em { color: var(--green-light); font-style: normal; }
+    .hero-content p {
+      margin: 1rem auto 2rem; max-width: 600px;
+      color: rgba(255,255,255,.88); font-size: 1.1rem;
+    }
+    .btn {
+      display: inline-block; padding: .8rem 2rem;
+      background: var(--gold); color: var(--green-dark);
+      font-weight: 700; border-radius: 50px; font-size: 1rem;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 16px rgba(0,0,0,.25);
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(0,0,0,.3); }
+    .btn-outline {
+      margin-left: 1rem;
+      background: transparent; color: var(--white);
+      border: 2px solid var(--white);
+    }
+    .btn-outline:hover { background: var(--white); color: var(--green-dark); }
+
+    /* ===== SECTION SHARED ===== */
+    section { padding: 5rem 1.5rem; }
+    .section-header { text-align: center; margin-bottom: 3rem; }
+    .section-header h2 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--green-dark); font-weight: 800;
+    }
+    .section-header p {
+      color: var(--text-muted); max-width: 600px; margin: .7rem auto 0;
+    }
+    .divider {
+      width: 60px; height: 4px;
+      background: var(--gold); border-radius: 4px;
+      margin: .8rem auto 0;
+    }
+
+    /* ===== ABOUT ===== */
+    #about { background: var(--white); }
+    .about-grid {
+      max-width: 1100px; margin: auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+      align-items: center;
+    }
+    .about-img { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+    .about-img img { height: 420px; }
+    .about-text h3 { font-size: 1.5rem; color: var(--green-dark); margin-bottom: .8rem; }
+    .about-text p { color: var(--text-muted); margin-bottom: 1rem; }
+    .stat-row { display: flex; gap: 1.5rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat strong { display: block; font-size: 1.8rem; color: var(--green-mid); font-weight: 900; }
+    .stat span { font-size: .82rem; color: var(--text-muted); }
+
+    /* ===== ATTRACTIONS ===== */
+    #attractions { background: var(--cream); }
+    .cards-grid {
+      max-width: 1200px; margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.8rem;
+    }
+    .card {
+      background: var(--white); border-radius: 16px;
+      overflow: hidden; box-shadow: var(--shadow);
+      transition: transform .3s, box-shadow .3s;
+    }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 14px 36px rgba(0,0,0,.16); }
+    .card-img { height: 210px; overflow: hidden; }
+    .card-img img { height: 100%; transition: transform .4s; }
+    .card:hover .card-img img { transform: scale(1.06); }
+    .card-body { padding: 1.3rem 1.4rem 1.6rem; }
+    .card-tag {
+      display: inline-block; background: #e8f5e9;
+      color: var(--green-dark); font-size: .72rem; font-weight: 700;
+      padding: .25rem .7rem; border-radius: 20px;
+      text-transform: uppercase; letter-spacing: .5px; margin-bottom: .6rem;
+    }
+    .card-body h3 { font-size: 1.1rem; color: var(--text-dark); margin-bottom: .5rem; }
+    .card-body p { font-size: .88rem; color: var(--text-muted); }
+
+    /* ===== CULTURE ===== */
+    #culture { background: var(--white); }
+    .culture-grid {
+      max-width: 1100px; margin: auto;
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+    .culture-card {
+      border-radius: 16px; overflow: hidden;
+      box-shadow: var(--shadow); position: relative;
+      background: var(--white);
+    }
+    .culture-card .card-img { height: 240px; }
+    .culture-card .card-body { padding: 1.2rem 1.4rem 1.5rem; }
+    .culture-card h3 { font-size: 1.05rem; color: var(--green-dark); font-weight: 700; margin-bottom: .4rem; }
+    .culture-card p { font-size: .87rem; color: var(--text-muted); }
+
+    /* ===== GALLERY ===== */
+    #gallery { background: var(--cream); }
+    .gallery-masonry {
+      max-width: 1200px; margin: auto;
+      columns: 3; column-gap: 1rem;
+    }
+    .gallery-item {
+      break-inside: avoid; margin-bottom: 1rem;
+      border-radius: 12px; overflow: hidden;
+      box-shadow: var(--shadow); cursor: pointer;
+      transition: transform .3s;
+    }
+    .gallery-item:hover { transform: scale(1.02); }
+    .gallery-item img { width: 100%; display: block; }
+
+    /* Lightbox */
+    .lightbox {
+      display: none; position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,.88); align-items: center; justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 10px; }
+    .lightbox-close {
+      position: absolute; top: 1.5rem; right: 2rem;
+      color: #fff; font-size: 2.5rem; cursor: pointer; line-height: 1;
+    }
+
+    /* ===== CONTACT ===== */
+    #contact { background: var(--green-dark); color: var(--white); }
+    #contact .section-header h2 { color: var(--gold); }
+    #contact .section-header p { color: rgba(255,255,255,.75); }
+    #contact .divider { background: var(--green-light); }
+    .contact-wrapper {
+      max-width: 900px; margin: auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+    }
+    .contact-info h3 { font-size: 1.2rem; color: var(--green-light); margin-bottom: 1rem; }
+    .info-item { display: flex; gap: .8rem; margin-bottom: 1rem; align-items: flex-start; }
+    .info-icon {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: var(--green-mid); display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .info-text strong { display: block; font-size: .82rem; color: var(--green-light); }
+    .info-text span { font-size: .9rem; }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%; padding: .75rem 1rem;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.25);
+      border-radius: 8px; color: var(--white); font-size: .95rem;
+      margin-bottom: 1rem; outline: none;
+      transition: border-color .2s;
+    }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: rgba(255,255,255,.5); }
+    .contact-form input:focus,
+    .contact-form textarea:focus { border-color: var(--green-light); }
+    .contact-form textarea { height: 130px; resize: vertical; }
+    .contact-form .btn { background: var(--gold); color: var(--green-dark); border: none; cursor: pointer; width: 100%; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #1a3d2b; color: rgba(255,255,255,.7);
+      text-align: center; padding: 2rem 1rem;
+      font-size: .85rem;
+    }
+    footer strong { color: var(--gold); }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none; flex-direction: column;
+        position: absolute; top: 64px; left: 0; right: 0;
+        background: var(--green-dark); padding: .5rem 1rem 1rem;
+        gap: .2rem;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li a { padding: .7rem .9rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-img img { height: 260px; }
+      .contact-wrapper { grid-template-columns: 1fr; gap: 2rem; }
+      .gallery-masonry { columns: 2; }
+    }
+    @media (max-width: 480px) {
+      .gallery-masonry { columns: 1; }
+      .hero-content h1 { font-size: 2rem; }
+      .btn-outline { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav>
+  <div class="nav-container">
+    <div class="logo">🌿 <span>Bukidnon</span></div>
+    <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home"        onclick="closeMenu()">Home</a></li>
+      <li><a href="#about"       onclick="closeMenu()">About</a></li>
+      <li><a href="#attractions" onclick="closeMenu()">Attractions</a></li>
+      <li><a href="#culture"     onclick="closeMenu()">Culture</a></li>
+      <li><a href="#gallery"     onclick="closeMenu()">Gallery</a></li>
+      <li><a href="#contact"     onclick="closeMenu()">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="home" class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">✦ Province of Bukidnon, Region X ✦</div>
+    <h1>Discover the<br><em>Highland Paradise</em><br>of Bukidnon</h1>
+    <p>Where rolling plateaus, misty mountains, and rich indigenous heritage converge in the heart of Mindanao.</p>
+    <a href="#attractions" class="btn">Explore Now</a>
+    <a href="#about" class="btn btn-outline">Learn More</a>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-img">
+      <img src="https://dotregion10.com/wp-content/uploads/2019/10/Mt-Kitanglad-Natural-Park-1.jpg"
+           alt="Mt. Kitanglad Natural Park" loading="lazy" />
+    </div>
+    <div class="about-text">
+      <h3>The Breadbasket of Mindanao</h3>
+      <p>
+        Bukidnon is a landlocked province in Northern Mindanao, known for its cool highland climate, fertile plateaus,
+        and vast pineapple and sugarcane plantations. It is home to the <strong>Bukidnon, Higaonon, Talaandig,
+        Manobo</strong>, and other indigenous peoples whose culture and crafts remain vibrant today.
+      </p>
+      <p>
+        From the cloud-kissed summit of <strong>Mt. Kitanglad</strong> — a UNESCO Man and Biosphere Reserve —
+        to the thrilling zip-lines of Dahilayan and the sacred weaves of Tagolwanen, Bukidnon offers an authentic
+        highland experience unlike any other in the Philippines.
+      </p>
+      <div class="stat-row">
+        <div class="stat"><strong>22</strong><span>Municipalities</span></div>
+        <div class="stat"><strong>2,955m</strong><span>Mt. Kitanglad Peak</span></div>
+        <div class="stat"><strong>10,498 km²</strong><span>Land Area</span></div>
+        <div class="stat"><strong>~1.5M</strong><span>Population</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ATTRACTIONS ===== -->
+<section id="attractions">
+  <div class="section-header">
+    <h2>Top Attractions</h2>
+    <div class="divider"></div>
+    <p>Explore the natural wonders and adventure destinations that make Bukidnon extraordinary.</p>
+  </div>
+  <div class="cards-grid">
+
+    <div class="card">
+      <div class="card-img">
+        <img src="https://dotregion10.com/wp-content/uploads/2019/10/Communal-Ranch-1.jpg"
+             alt="Communal Ranch" loading="lazy" />
+      </div>
+      <div class="card-body">
+        <span class="card-tag">🐄 Ranch</span>
+        <h3>Communal Ranch</h3>
+        <p>Experience life on one of the largest communal cattle ranches in Southeast Asia, sprawled across the cool highlands of Bukidnon.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img">
+        <img src="https://dotregion10.com/wp-content/uploads/2019/10/Dahilayan-Adventure-Park-2.jpg"
+             alt="Dahilayan Adventure Park" loading="lazy" />
+      </div>
+      <div class="card-body">
+        <span class="card-tag">🎢 Adventure</span>
+        <h3>Dahilayan Adventure Park</h3>
+        <p>Home to Asia's longest dual zip-line and a host of thrilling rides nestled at 3,000 feet above sea level with panoramic mountain views.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img">
+        <img src="https://dotregion10.com/wp-content/uploads/2019/10/Mt-Kitanglad-Natural-Park-2.jpg"
+             alt="Mt. Kitanglad" loading="lazy" />
+      </div>
+      <div class="card-body">
+        <span class="card-tag">🏔️ Natural Park</span>
+        <h3>Mt. Kitanglad Range Natural Park</h3>
+        <p>A UNESCO Man and Biosphere Reserve teeming with rare flora and fauna, including the Philippine Eagle and over 300 orchid species.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img">
+        <img src="https://dotregion10.com/wp-content/uploads/2019/10/Mindamora-Falls-1.jpg"
+             alt="Mindamora Falls" loading="lazy" />
+      </div>
+      <div class="card-body">
+        <span class="card-tag">💧 Waterfall</span>
+        <h3>Mindamora Falls</h3>
+        <p>A pristine multi-tiered waterfall hidden within the verdant forests of Bukidnon, offering a refreshing escape from the highland heat.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img">
+        <img src="https://dotregion10.com/wp-content/uploads/2019/10/Del-Monte-Plantation-1.jpg"
+             alt="Del Monte Plantation" loading="lazy" />
+      </div>
+      <div class="card-body">
+        <span class="card-tag">🍍 Agri-Tourism</span>
+        <h3>Del Monte Pineapple Plantation</h3>
+        <p>Tour the world-famous Del Monte pineapple fields — a sea of green stretching to the horizon on the fertile Bukidnon plateau.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img">
+        <img src="https://dotregion10.com/wp-content/uploads/2019/10/Panimahawa-Ridge-1.jpg"
+             alt="Panimahawa Ridge" loading="lazy" />
+      </div>
+      <div class="card-body">
+        <span class="card-tag">🌄 Ridge</span>
+        <h3>Panimahawa Ridge</h3>
+        <p>An iconic vantage point offering sweeping 360° views of Bukidnon's rolling green hills and mountain ranges at sunrise and sunset.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== CULTURE ===== -->
+<section id="culture">
+  <div class="section-header">
+    <h2>Culture &amp; Heritage</h2>
+    <div class="divider"></div>
+    <p>Bukidnon's soul lives in its indigenous traditions, sacred spaces, and living arts.</p>
+  </div>
+  <div class="culture-grid">
+
+    <div class="culture-card">
+      <div class="card-img">
+        <img src="https://dotregion10.com/wp-content/uploads/2019/10/Abbey-of-Transfiguration-1.jpg"
+             alt="Abbey of the Transfiguration" loading="lazy" />
+      </div>
+      <div class="card-body">
+        <span class="card-tag">⛪ Spiritual</span>
+        <h3>Abbey of the Transfiguration</h3>
+        <p>A serene Benedictine monastery perched amid the pine-scented highlands of Bukidnon, welcoming pilgrims and retreatants seeking peace.</p>
+      </div>
+    </div>
+
+    <div class="culture-card">
+      <div class="card-img">
+        <img src="https://dotregion10.com/wp-content/uploads/2019/10/Tagolwanen-Weavers-1.jpg"
+             alt="Tagolwanen Women Weavers" loading="lazy" />
+      </div>
+      <div class="card-body">
+        <span class="card-tag">🧵 Indigenous Craft</span>
+        <h3>Tagolwanen Women Weavers</h3>
+        <p>The Tagolwanen Women Weavers Association preserves the age-old tradition of back-strap loom weaving, creating intricate textiles that tell Bukidnon's story.</p>
+      </div>
+    </div>
+
+    <div class="culture-card">
+      <div class="card-img">
+        <img src="https://dotregion10.com/wp-content/uploads/2019/10/Salima-Saway-Painting-1.jpg"
+             alt="Salima Saway Soil Painting Gallery" loading="lazy" />
+      </div>
+      <div class="card-body">
+        <span class="card-tag">🎨 Art Gallery</span>
+        <h3>Salima Saway Soil Painting Gallery</h3>
+        <p>Discover breathtaking artworks crafted entirely from natural Bukidnon soil by master artist Salima Saway — a unique testament to the land's rich pigments.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section id="gallery">
+  <div class="section-header">
+    <h2>Photo Gallery</h2>
+    <div class="divider"></div>
+    <p>Glimpses of Bukidnon's breathtaking landscapes and vibrant culture.</p>
+  </div>
+  <div class="gallery-masonry">
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="https://dotregion10.com/wp-content/uploads/2019/10/Communal-Ranch-1.jpg" alt="Communal Ranch" loading="lazy" />
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="https://dotregion10.com/wp-content/uploads/2019/10/Dahilayan-Adventure-Park-1.jpg" alt="Dahilayan Adventure Park" loading="lazy" />
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="https://dotregion10.com/wp-content/uploads/2019/10/Mt-Kitanglad-Natural-Park-1.jpg" alt="Mt. Kitanglad" loading="lazy" />
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="https://dotregion10.com/wp-content/uploads/2019/10/Mindamora-Falls-1.jpg" alt="Mindamora Falls" loading="lazy" />
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="https://dotregion10.com/wp-content/uploads/2019/10/Del-Monte-Plantation-1.jpg" alt="Del Monte Plantation" loading="lazy" />
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="https://dotregion10.com/wp-content/uploads/2019/10/Panimahawa-Ridge-1.jpg" alt="Panimahawa Ridge" loading="lazy" />
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="https://dotregion10.com/wp-content/uploads/2019/10/Abbey-of-Transfiguration-1.jpg" alt="Abbey of the Transfiguration" loading="lazy" />
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="https://dotregion10.com/wp-content/uploads/2019/10/Tagolwanen-Weavers-1.jpg" alt="Tagolwanen Weavers" loading="lazy" />
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <img src="https://dotregion10.com/wp-content/uploads/2019/10/Salima-Saway-Painting-1.jpg" alt="Salima Saway Painting" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close" onclick="closeLightbox()">×</span>
+  <img id="lightboxImg" src="" alt="Gallery" />
+</div>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="section-header">
+    <h2>Plan Your Visit</h2>
+    <div class="divider"></div>
+    <p>Get in touch with the Bukidnon Tourism Office for travel information and assistance.</p>
+  </div>
+  <div class="contact-wrapper">
+    <div class="contact-info">
+      <h3>Tourism Information</h3>
+      <div class="info-item">
+        <div class="info-icon">📍</div>
+        <div class="info-text">
+          <strong>Location</strong>
+          <span>Capitol Compound, Malaybalay City, Bukidnon 8700</span>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">📞</div>
+        <div class="info-text">
+          <strong>Phone</strong>
+          <span>(088) 813-5002</span>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">✉️</div>
+        <div class="info-text">
+          <strong>Email</strong>
+          <span>tourism@bukidnon.gov.ph</span>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">🕐</div>
+        <div class="info-text">
+          <strong>Office Hours</strong>
+          <span>Monday – Friday, 8:00 AM – 5:00 PM</span>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">✈️</div>
+        <div class="info-text">
+          <strong>Nearest Airport</strong>
+          <span>Laguindingan Airport (CDO), ~1.5 hrs drive</span>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3 style="color:var(--green-light);margin-bottom:1rem;">Send an Inquiry</h3>
+      <input type="text"  placeholder="Your Full Name" />
+      <input type="email" placeholder="Your Email Address" />
+      <input type="text"  placeholder="Subject (e.g., Tour Package Inquiry)" />
+      <textarea placeholder="Your message…"></textarea>
+      <button class="btn" onclick="handleSubmit(event)">Send Message</button>
+      <p id="form-msg" style="margin-top:.8rem;color:var(--green-light);display:none;">✔ Message sent! We'll get back to you soon.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p>
+    &copy; 2024 <strong>Province of Bukidnon</strong> — Tourism Promotions ·
+    Images courtesy of <strong>DOT Region X</strong> ·
+    <em>Chosen City/Municipality: <strong>Bukidnon (Malaybalay City)</strong></em>
+  </p>
+  <p style="margin-top:.5rem">
+    Activity 10 – Promotional Website · Built with pure HTML, CSS &amp; JavaScript
+  </p>
+</footer>
+
+<!-- ===== SCRIPTS ===== -->
+<script>
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('navLinks').classList.remove('open');
+  }
+
+  // Active nav link on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 80) current = sec.id;
+    });
+    links.forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+    });
+  });
+
+  // Lightbox
+  function openLightbox(el) {
+    const src = el.querySelector('img').src;
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+  // Contact form mock submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const msg = document.getElementById('form-msg');
+    msg.style.display = 'block';
+    setTimeout(() => msg.style.display = 'none', 5000);
+  }
+</script>
+</body>
+</html>
